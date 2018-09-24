@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title></title>
+	
+	<!-- нужен JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<!-- <script src="js/jquery-2.2.3.min.js"></script> -->
+
+	
+	<!-- не сработало CDN -->
+	<!-- 
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+	-->
+
+	<!-- подключаем LIB локально -->
+	<link rel="stylesheet" type="text/css" href="slick-1.8.1/slick/slick.css"/>
+	<script type="text/javascript" src="slick-1.8.1/slick/slick.js"></script>
+
+
+  </head>
+ 
+
+
+
+ 
+  <body>
+ 		  <!-------------- CSS ----------------->	  
+		  <style>
+					/* Ну и немнокжо стилизации по вкусу */
+					.main-page__slider .slick-slide {
+						padding: 5px;
+						border: 1px solid #eee;
+						box-sizing: border-box;
+						margin: 5px 10px;
+						outline: none;
+						box-shadow: #ccc 2px 2px 4px;
+					}
+
+					.main-page__slider {
+						margin: 0 auto; 
+						width: calc(100% - 40px); /* 40px - ширина для кнопок навигации */
+					}
+
+					.main-page__slider .slick-arrow:before {
+						color: #4B6A93;
+					}
+				
+		  </style>
+ 		  <!-------------- end: CSS ------------>  
+
+		  
+		  <!-------------- HTML ----------------->
+		  		  <!-- слайды -->
+				<div class="main-page__slider">
+				  <img data-lazy="IMG_01.jpg" title="IMG_01.jpg">
+				  <img data-lazy="IMG_02.jpg" title="IMG_02.jpg">
+				  <img data-lazy="IMG_03.jpg" title="IMG_03.jpg">
+				  <img data-lazy="IMG_04.jpg" title="IMG_04.jpg">
+				  <img data-lazy="IMG_05.jpg" title="IMG_05.jpg">
+				  <img data-lazy="IMG_06.jpg" title="IMG_06.jpg">
+				</div>
+
+		  <!-------------- end: HTML ------------>		  
+
+
+ 		  
+		  <!-------------- JS ----------------->
+		  <script>
+
+		  // Код инициализации
+			  $('.main-page__slider').slick({
+				lazyLoad: 'ondemand',
+				slidesToShow: 5,
+				slidesToScroll: 1,
+				variableWidth: true,	
+				dots: true,
+				infinite: true,
+				speed: 500,
+				centerMode: true
+			  });
+  
+		  </script>
+		  <!-------------- end: JS ------------>	 
+
+
+  
+  </body>
+</html>
