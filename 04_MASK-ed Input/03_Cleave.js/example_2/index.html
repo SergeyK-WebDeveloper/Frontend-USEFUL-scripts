@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  
+  <script src="js/cleave.min.js"></script>
+  <script src="js/cleave-phone.i18n.js"></script>
+  
+  
+</head>
+
+<body>
+
+<div>
+    <section>
+        <p>Credit card detector (<span class="type">unknown</span>): </p>
+        <input class="input-0" />
+    </section>
+
+    <section>
+        <p>Date with "." as delimiter: </p>
+        <input class="input-3" />
+    </section>
+
+    <section>
+        <p>Numeral style like "1.234.567,89":</p>
+        <input class="input-4 right" />
+    </section>
+
+    <section>
+        <p>Numeral with "$" as prefix:</p>
+        <input class="input-1 right" />
+    </section>
+
+    <section>
+        <p>Use multiple delimiters:</p>
+        <input class="input-5" />
+    </section>
+
+    <section>
+        <p>Use empty delimiter:</p>
+        <input class="input-6" />
+    </section>
+
+    <section>
+        <p>V.A.T Identification Number:</p>
+        <input class="input-2" />
+    </section>
+
+    <section>
+        <p>Prefix (can be modified):</p>
+        <input value="deleteme" class="input-7" />
+    </section>
+
+    <section>
+        <p>Phone number country code prepend</p>
+        <a href="https://jsfiddle.net/nosir/0amruddk/" target="_blank">Check here</a>
+    </section>
+
+    <section>
+        <p>Delimiter lazy show</p>
+        <input value="" class="input-9" />
+    </section>
+
+    <section>
+        <p>Multiple characters in delimiter - 1:</p>
+        <input value="123456789abc" class="input-8-1" />
+    </section>
+    <section>
+        <p>Multiple characters in delimiter - 2:</p>
+        <input value="123456789abc" class="input-8-2" />
+    </section>
+
+    <section>
+        <p>(555) 555-5555</p>
+        <input value="" class="input-10" />
+    </section>
+    <section>
+        <p>(555) 555-5555 (Another way)</p>
+        <input value="" class="input-11" />
+    </section>
+</div>
+
+
+
+<script>
+
+new Cleave('.input-0', {
+    creditCard: true,
+    onCreditCardTypeChanged: function(type) {
+        document.querySelector('.type').innerHTML = type;
+    }
+});
+
+new Cleave('.input-3', {
+    date: true,
+    datePattern: ['Y', 'm', 'd'],
+    delimiter: '.'
+});
+
+new Cleave('.input-4', {
+    numeral: true,
+    numeralDecimalMark: ',',
+    delimiter: '.'
+});
+
+new Cleave('.input-1', {
+    numeral: true,
+    prefix: '$'
+});
+
+new Cleave('.input-5', {
+    uppercase: true,
+    delimiters: ['.', '.', '-'],
+    blocks: [3, 3, 3, 2]
+});
+
+new Cleave('.input-6', {
+    uppercase: true,
+    delimiter: '',
+    prefix: 'UFO',
+    blocks: [3, 6] // or [9]
+});
+
+new Cleave('.input-2', {
+    numericOnly: true,
+    delimiter: '.',
+    prefix: 'BE',
+    blocks: [5, 3, 3]
+});
+
+new Cleave('.input-7', {
+    uppercase: true,
+    delimiter: '-',
+    blocks: [6, 2, 3, 3]
+});
+
+new Cleave('.input-8-1', {
+    uppercase: true,
+    delimiters: [' ', '|', ' ', ' ', '|', ' ', ' ', '|', ' '],
+    blocks: [3, 0, 0, 3, 0, 0, 3, 0, 0, 3, 0]
+});
+
+new Cleave('.input-8-2', {
+    uppercase: true,
+    delimiters: [' | ', ' | ', ' | '],
+    blocks: [3, 3, 3, 3]
+});
+
+new Cleave('.input-9', {
+    delimiter: '-',
+    blocks: [3, 3, 3],
+    delimiterLazyShow: true
+});
+
+new Cleave('.input-10', {
+    numericOnly: true,
+    blocks: [0, 3, 0, 3, 4],
+    delimiters: ["(", ")", " ", "-"]
+});
+
+new Cleave('.input-11', {
+    numericOnly: true,
+    blocks: [0, 3, 3, 4],
+    delimiters: ["(", ") ", "-"]
+});
+
+
+
+</script>
+
+
+<style>
+
+input,
+a {
+    width: 80%;
+    display: block;
+    outline: none;
+    -webkit-appearance: none;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    background-color: #fff;
+    line-height: 30px;
+    vertical-align: middle;
+    height: 33px;
+    font-size: 14px;
+    padding: 0 8px;
+}
+
+.input-numeral {
+    text-align: right;
+}
+
+.right {
+    text-align: right;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+p {
+    margin: 0;
+    padding: 0 0 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+section {
+    margin-bottom: 15px;
+    width: 50%;
+    float: left;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    background: #bbb;
+    border-color: #bbb;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+</style>
+
+
+</body>
+
+</html>
