@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  font: 16px/1 'Open Sans', sans-serif;
+  background: #ddd
+}
+
+.nav {
+  $w: 500px;
+  $h: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $w;
+  height: $h;
+  margin-top: -($h/2);
+  margin-left: -($w/2);
+  background: #fff;
+  transform: translateZ(0);
+  &:hover .link {
+    width: 5%;
+  }
+  .link {
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 100%;
+    color: #aaa;
+    border-right: 1px solid #ddd;
+    transition: .5s width;
+    overflow: hidden;
+    cursor: pointer;
+    &:last-child {
+      border-right: 0;
+    }
+    &:hover {
+      width: 80%;
+      color: #555;
+    }
+    .small {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: ($w/5);
+      line-height: 78px;
+      text-align: center;
+      font-family: fontawesome;
+      font-size: 24px;
+    }
+    .full {
+      position: absolute;
+      top: 22px;
+      left: 100px;
+      text-transform: uppercase;
+      .f1, .f2 {
+        font-size: 16px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .f2 {
+        margin-top: 8px;
+        font-size: 12px;
+      }
+    }
+    .prev {
+      position: absolute;
+      top: 0;
+      left: 7px;
+      font-family: fontawesome;
+      font-size: 12px;
+      line-height: 78px;
+      transition: .5s opacity;
+      opacity: 0;
+    }
+    &:hover .prev {
+      opacity: 0;
+    }
+  }
+  &:hover .prev {
+    opacity: 1;
+  }
+}
