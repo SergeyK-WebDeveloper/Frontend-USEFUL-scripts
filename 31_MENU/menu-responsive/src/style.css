@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@media only screen and (min-width: 990px) and (max-width: 2650px){ 
+
+#handle {
+  display:none;
+}  
+#meniu {
+  background-color: #0099ff;
+  width:100%;
+  height: 52px;
+}
+.nav {
+    margin: 0 auto;
+    max-width:1170px;
+    width:100%;
+}
+#meniu ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    position:relative;
+}
+#meniu li {
+    float: left;
+    position:relative;
+    z-index:9999;
+}
+#meniu li.dropdown::after {
+    position: absolute;
+    content: " ▼";
+    top: 19px;
+    right: 0;
+    z-index:9999;
+   color: #fff;
+   font-size: 13px;
+}
+#meniu li a {
+    display: block;
+    color: white;
+    font-size:15px;
+    text-align: left;
+    padding: 17px 15px;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+/* Change the link color to #111 (black) on hover */
+#meniu li a:hover {
+    background-color: #111;
+}
+#meniu ul li ul {
+  z-index:9999;
+  padding: 0;
+  position: absolute;
+  top: 48px;
+  width: 200px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+}
+  
+#meniu ul li ul li { 
+  position:relative;
+  text-align: left;
+  background: #0099ff; 
+  display: block; 
+  color: #fff;
+  width:200px;
+  text-shadow: 0 -1px 0 #000;
+  z-index:9999;
+}
+#meniu ul li ul li a{
+  display: block;
+  color: #fff;
+  font-size: 15px;
+  text-align: left;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: capitalize;
+}
+#meniu ul li ul li:hover { background: blue; }
+#meniu ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  z-index:9999;
+  }
+}
+
+/*= media query */
+
+@media only screen and (min-width: 68px) and (max-width: 990px) { 
+
+ #handle {
+    display: block;
+    height: auto;
+    padding: 17px;
+    margin:0;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    text-align: left;
+    font-size:15px;
+  }  
+  
+.show {
+  display:block!important;
+} 
+
+.nav {
+    width: auto;
+    margin: 0 auto;
+    text-align: left;
+    display:none;
+}
+#meniu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: auto;
+}
+#meniu ul li {
+   display: block;
+   background: #333;
+   font-size:14px;
+}
+#meniu ul li:hover {
+    background-color: #111;
+}
+#meniu ul li a {
+    font-size:14px;
+    color: #fff;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+#meniu ul ul li {
+  display: block; 
+  position: relative;
+  background-color: #333;
+  font-size: 14px;
+  padding: 0 20px;
+  border-top: 0;
+  margin: 0;
+  }
+}
