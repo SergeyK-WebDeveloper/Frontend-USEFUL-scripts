@@ -1,0 +1,61 @@
+$primary_color = #da513d
+
+html, body
+  width 100%
+  height 100%
+
+body
+  display flex
+  font-size: 1.5
+  align-items center
+  justify-content center
+  background $primary_color
+  font-family Lato, sans-serif
+  
+.btn
+  display block
+  padding 1em 2em
+  background transparent
+  color #fff
+  border 1px solid #fff
+  outline 0
+  text-transform uppercase
+  cursor pointer
+  transition .3s ease
+  -webkit-appearance none
+  
+  &:hover
+    background white
+    color $primary_color
+  
+.modal
+  opacity 0
+  visibility hidden
+  display flex
+  align-items center
+  justify-content center
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background rgba(0,0,0,0.7)
+  transition .3s ease-in-out
+  
+  &__box
+    padding 1em
+    background white
+    box-shadow 0 0 10px 0 rgba(0,0,0,0.2)
+    text-align center
+    transition all .3s cubic-bezier(.20,.90,.30,1.5)
+    transform rotate(5deg) translate(-1em,1em)
+    border-top 5px solid $primary_color
+    border-bottom 5px solid #ddd
+  
+/* modal magic */
+.btn:focus + .modal
+  opacity 1
+  visibility visible
+  
+  .modal__box
+    transform rotate(0deg) translate(0,0)
