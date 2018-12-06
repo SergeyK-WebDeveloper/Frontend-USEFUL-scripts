@@ -1,0 +1,59 @@
+{
+  "name": "@webcreate/infinite-ajax-scroll",
+  "version": "3.0.0-beta.4",
+  "title": "Infinite Ajax Scroll",
+  "description": "Turn your existing pagination into infinite scrolling pages with ease",
+  "license": "AGPL-3.0-only",
+  "homepage": "https://infiniteajaxscroll.com",
+  "repository": "github:webcreate/infinite-ajax-scroll",
+  "bugs": "https://github.com/webcreate/infinite-ajax-scroll/issues",
+  "keywords": [
+    "infinite-ajax-scroll",
+    "infinite-scroll",
+    "infinite",
+    "endless",
+    "scroll",
+    "scrolling",
+    "ajax",
+    "pagination",
+    "ias",
+    "jquery-ias"
+  ],
+  "author": {
+    "company": "Webcreate",
+    "name": "Jeroen Fiege",
+    "web": "https://webcreate.nl"
+  },
+  "main": "dist/infinite-ajax-scroll.js",
+  "unpkg": "dist/infinite-ajax-scroll.js",
+  "module": "dist/infinite-ajax-scroll.es.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "cypress": "cypress open -d",
+    "start": "http-server -p 8080 ./ --silent -c-1 &",
+    "test": "cypress run",
+    "lint": "eslint src test"
+  },
+  "dependencies": {
+    "extend": "^3.0.2",
+    "lodash.throttle": "^4.1.1",
+    "tealight": "^0.3.6",
+    "tiny-emitter": "^2.1.0"
+  },
+  "devDependencies": {
+    "cypress": "^3.3.2",
+    "eslint": "^6.0.1",
+    "eslint-plugin-cypress": "^2.2.1",
+    "http-server": "^0.11.1",
+    "rollup": "^1.16.7",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1"
+  }
+}

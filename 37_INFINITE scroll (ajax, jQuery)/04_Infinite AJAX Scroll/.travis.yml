@@ -1,0 +1,33 @@
+sudo: required
+
+language: node_js
+
+branches:
+  only:
+    - master
+    - 2.x
+    - 1.x
+
+node_js:
+  - 10
+
+addons:
+  apt:
+    packages:
+      - libgconf-2-4    # required for cypress
+
+cache:
+  npm: true
+  directories:
+    - "$HOME/.cache"
+
+install:
+  - npm ci
+  - npm run build
+
+before_script:
+  - ./node_modules/.bin/http-server -p 8080 ./ --silent &
+
+script:
+  - npm run lint
+  - cypress run
