@@ -1,0 +1,234 @@
+<?php
+
+//========================================== ВАЛИДАЦИЯ РАБОЧЕГО ВРЕМЕНИ - ГОТОВО !! =====================
+
+// ТЕОРИЯ: 
+//echo  strtotime('9:00'); // переведет в unix_datetime:  strtotime('9:00') = 1516629600 (int 10 цифр); 
+//echo  time();            //      даст в unix_datetime:  time() = 1516629600 (int 10 цифр); .. (09:00)
+
+//  var_dump(getdate());   // выдает АССОЦИИРОВАННЫЙ массив - смотри ниже
+
+
+
+
+
+
+$Now = getdate();
+				//var_dump($Now);   // выдает АССОЦИИРОВАННЫЙ массив
+				/* 					
+					array (size=11)
+					  'seconds' => int 34
+					  'minutes' => int 56
+					  'hours' => int 11
+					  'mday' => int 22
+					  'wday' => int 1
+					  'mon' => int 1
+					  'year' => int 2018
+					  'yday' => int 21
+					  'weekday' => string 'Monday' (length=6)
+					  'month' => string 'January' (length=7)
+					  0 => int 1516614994
+				*/
+ 
+ if (  ($Now['wday'] == 0) || ($Now['wday'] == 6)   ) {
+	 // точно ВЫХОДНОЙ [ВС=0, Пн=1.....Сб=6]
+	 $msg = 'Мы свяжемся с Вами в Понедельник до 11:00 для уточнения деталей';
+ }else{
+	// точно РАБОЧИЙ день
+    // проверяем время:	    time()=1516616962 (int)  дает unix_datetime 
+	if (    (time() >= strtotime('9:00')) AND (time() < strtotime('17:00'))   )   {$msg = 'Мы свяжемся с Вами в течении 2х часов для уточнения деталей.';}
+	
+	if (time() < strtotime('9:00'))  {$msg = 'Мы свяжемся с Вами сегодня до 11:00 для уточнения деталей';}
+	if (time() >= strtotime('17:00')) {$msg = 'Мы свяжемся с Вами завтра до 11:00 для уточнения деталей';} 
+ }
+ 
+ 
+echo '<br> 777777'.$msg.'<br>';
+
+var_dump(time());
+
+
+
+
+
+
+//===================================== просто все скрипты которые находил =====================
+
+
+
+ ///////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ ////////////////////////////////// Функция РАБОЧЕГО ВРЕМЕНИ ///////////////////////////////////
+ //
+ // Возвращает СЕГОДНЕШНЕЕ рабочее время + если сегодня ВЫХОДНОЙ, то FALSE
+ //
+ // Функция возвращает FALSE если сейчас не рабочее время или
+ // или массив с сегодняшним рабочим временем (‘begin’ -> unix_datetime, ‘end’ -> unix_datetime)
+ //
+ ///////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+ 
+ // Конфигурация
+
+  $OfficeWorkTimes = array(
+	// day => null OR day => array('8:00','17:00')
+	1 => array('9:00','17:00'), // MON
+	2 => array('9:00','17:00'),
+	3 => array('9:00','17:00'),
+	4 => array('9:00','17:00'),
+	5 => array('9:00','17:00'), // FRI
+	6 => null , // SAT
+	0 => null   // SUN
+  );
+  
+  
+// Функция
+
+
+  function OfficeWorkTime($dummy = false) {
+	GLOBAL $OfficeWorkTimes;
+	// Return: FALSE || array('begin' -> unix_datetime, 'end' -> unix_datetime)
+	
+	
+	$Now = getdate(); // получает АССОЦИИРОВАННЫЙ массив
+	            
+				//var_dump($Now);   // выдает АССОЦИИРОВАННЫЙ массив
+				/* 					
+					array (size=11)
+					  'seconds' => int 34
+					  'minutes' => int 56
+					  'hours' => int 11
+					  'mday' => int 22
+					  'wday' => int 1
+					  'mon' => int 1
+					  'year' => int 2018
+					  'yday' => int 21
+					  'weekday' => string 'Monday' (length=6)
+					  'month' => string 'January' (length=7)
+					  0 => int 1516614994
+				*/
+  
+	$v = $OfficeWorkTimes[$Now['wday']];
+	if (null == $v) 
+		return false;
+	else {
+		
+		$begin = strtotime( $OfficeWorkTimes[$Now['wday']][0]);   // unix_datetime:         'begin' => int 1516600800
+		$end   = strtotime( $OfficeWorkTimes[$Now['wday']][1]);   // unix_datetime:           'end' => int 1516633200
+		
+		if ( (time() < $begin ) OR ( time() > $end ) ) 
+			return false;
+		else 
+			return array('begin' => $begin, 'end' => $end);
+	}
+  }
+
+  
+ 
+var_dump( OfficeWorkTime() ); // тк выдает МАССИВ (внутри время в unix_datetime)
+
+
+
+
+// ------------------------ вариант 2: mktime()  ----------------------------
+ 
+$cur_month = 1; 
+$cur_day = 22; 
+$cur_year=2018; 
+  
+
+$week     = array(0=>"Вс", "Пн","Вт","Ср","Чт","Пт","Сб");
+$week_day = $week[date("w",mktime (0, 0, 0, $cur_month, $cur_day, $cur_year))];
+
+echo '<br> Вариант_1: ' . $week_day; //Пн
+
+
+// ------------------------ вариант 3 ----------------------------
+
+	
+
+  
+  
+  //--------------------------------------------------- работа --------------------------------------
+  
+  
+
+  
+ 
+
+// Установливаем русскую локаль
+    // или setlocale(LC_ALL, 'ru_RU'); в PHP 4
+    setlocale(LC_ALL, 'rus_RUS');
+    
+	// Получаем сегодняшнюю дату
+    // Формируем вывод
+    // %a - короткая запись дня недели (Чт)
+    // %A - обычная запись дня недели (Четверг)
+    // %Y - год полностью (2008)
+    // %y - год кратко (08)
+	
+	
+	
+	
+    // Короче, смотрите маны
+    
+	$data = strftime("%a, %d/%m/%Y", time());
+    // В PHP4 потребуется конвертация
+    //$data = iconv('ISO-8859-5','windows-1251', $data);
+    echo '<br> Вариант_3_1: ' .$data; // В PHP 4 название дня недели
+    // будет начинаться с заглавной буквы
+    // в обычной форме записи
+
+
+
+
+	
+  
+$date = '2018-01-22';
+echo '<br> Вариант_3_2: ' .strftime("%a, %d/%m/%Y", strtotime($date));   // Mon, 22/01/2018
+
+
+
+
+
+$today = date("H:i:s");
+echo '<br> Всремя сейчас: ' .$today; // В PHP 4 название дня недели
+
+
+
+
+
+
+
+
+
+
+echo strftime("%A %d %B %Y %H:%M<br>");
+error_reporting(E_ALL & ~E_WARNING);
+
+setlocale('LC_ALL','');
+echo strftime("Сегодня %A %d %B %Y %X<br>");
+echo strftime("%Z<br>");
+
+
+
+// ---------------------------------------  ДАТА Следующего РАБОЧЕГО дня:  если ВЫХОДНОЙ - берет след раб день-------------------------------
+
+//  если ВОСКРЕСЕНЬЕ    --> берет (+1) Пн  - дату
+//  если СУББОТА        --> берет (+2) Пн  - дату
+
+// если СЕЙЧАС РАБ день --> выведет СЕГОДНЕШНЮЮ ДАТУ
+
+echo "<br> Следующий рабочий день:".
+    date("d.m.Y",(intval(date("w")==0 ? strtotime("next day") :
+            (intval(date("w")==6 ? strtotime("+2 day") : strtotime("now") )))));
+			
+echo "<br> Следующий рабочий день:".
+    date("d.m.Y",(intval(date("w")==0 ? strtotime("next day") :
+            (intval(date("w")==6 ? strtotime("+2 day") : strtotime("now") )))));
+				
+				
+				
+
+?>
