@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>выбор ПЕРИОДА и НЕСКОЛЬКИХ ДАТ</title>
+  
+  <link rel="stylesheet" href="jquery-ui-1.10.3.custom.css">
+
+	
+	
+
+  <script src="jquery.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script src="jquery.datepicker.extension.range.min.js"></script>
+  
+  
+  
+ </head>
+ <body>
+  <h1>выбор ПЕРИОДА и НЕСКОЛЬКИХ ДАТ</h1>
+
+
+
+Выберите период:
+<br>
+<br>
+<input id="date_range" readonly>
+<br>
+<br> Выберите несколько дат:
+<br>
+<br>
+<input id="date_range_multiple" readonly>
+
+
+
+
+
+
+
+
+<script>
+
+$(function() {
+  $('#date_range').datepicker({
+    range: 'period', // режим - выбор периода
+    numberOfMonths: 2,
+    onSelect: function(dateText, inst, extensionRange) {
+      // extensionRange - объект расширения
+      $('#date_range').val(extensionRange.startDateText + ' - ' + extensionRange.endDateText);
+    }
+  });
+
+  $('#date_range_multiple').datepicker({
+    range: 'multiple', // режим - выбор периода
+    onSelect: function(dateText, inst, extensionRange) {
+      // extensionRange - объект расширения
+      $('#date_range_multiple').val(extensionRange.datesText.join(', '));
+    }
+  });
+});
+
+</script>
+
+
+<style>
+
+.ui-datepicker .selected-start:not(.selected-end) a,
+.ui-datepicker .selected-end:not(.selected-start) a {
+  background: #F3FDD5;
+}
+
+.ui-datepicker .selected.first-of-month:not(.selected-start) a {
+  border-left: 2px dotted #D4E7F6;
+  padding-left: 1px;
+}
+
+.ui-datepicker .selected.last-of-month:not(.selected-end) a {
+  border-right: 2px dotted #D4E7F6;
+  padding-right: 1px;
+}
+
+#date_range_multiple{ width: 350px; }
+
+
+</style>
+
+
+
+ </body>
+</html>

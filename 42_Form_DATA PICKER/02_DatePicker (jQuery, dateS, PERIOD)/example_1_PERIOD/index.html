@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Пример веб-страницы</title>
+  
+  <link rel="stylesheet" href="jquery-ui-1.10.3.custom.css">
+
+	
+	
+
+  <script src="jquery.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script src="jquery.datepicker.extension.range.min.js"></script>
+  
+  
+  
+ </head>
+ <body>
+  <h1>Заголовок</h1>
+
+
+
+Выберите период:
+<br>
+<br>
+<div id="date_range"></div>
+<br>
+<input name="startDate">
+<input name="endDate">
+
+
+
+
+
+
+
+
+<script>
+$(function() {
+  $('#date_range').datepicker({
+    range: 'period', // режим - выбор периода
+    numberOfMonths: 2,
+    onSelect: function(dateText, inst, extensionRange) {
+    	// extensionRange - объект расширения
+      $('[name=startDate]').val(extensionRange.startDateText);
+      $('[name=endDate]').val(extensionRange.endDateText);
+    }
+  });
+
+  $('#date_range').datepicker('setDate', ['+4d', '+8d']);
+
+  // объект расширения (хранит состояние календаря)
+  var extensionRange = $('#date_range').datepicker('widget').data('datepickerExtensionRange');
+  if(extensionRange.startDateText) $('[name=startDate]').val(extensionRange.startDateText);
+  if(extensionRange.endDateText) $('[name=endDate]').val(extensionRange.endDateText);
+});
+
+</script>
+
+
+<style>
+.ui-datepicker .selected-start:not(.selected-end) a,
+.ui-datepicker .selected-end:not(.selected-start) a {
+  background: #F3FDD5;
+}
+
+.ui-datepicker .selected.first-of-month:not(.selected-start) a {
+  border-left: 2px dotted #D4E7F6;
+  padding-left: 1px;
+}
+
+.ui-datepicker .selected.last-of-month:not(.selected-end) a {
+  border-right: 2px dotted #D4E7F6;
+  padding-right: 1px;
+}
+
+</style>
+
+
+
+ </body>
+</html>

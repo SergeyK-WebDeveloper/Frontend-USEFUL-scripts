@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>выбор нескольких дат</title>
+  
+  <link rel="stylesheet" href="jquery-ui-1.10.3.custom.css">
+
+	
+	
+
+  <script src="jquery.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script src="jquery.datepicker.extension.range.min.js"></script>
+  
+  
+  
+ </head>
+ <body>
+  <h1>выбор нескольких дат</h1>
+
+
+
+<br>
+<br>
+<div id="date_range"></div>
+<br>
+<textarea name="multipleDate"></textarea>
+
+
+
+
+
+
+
+
+<script>
+
+$(function() {
+  $('#date_range').datepicker({
+    range: 'multiple', // режим - выбор нескольких дат 
+    range_multiple_max: '5', // макимальное число выбираемых дат
+    onSelect: function(dateText, inst, extensionRange) {
+      // extensionRange - объект расширения
+      $('[name=multipleDate]').val(extensionRange.datesText.join('\n'));
+    }
+  });
+
+  // выделить послезавтра и следующие 2 дня
+  $('#date_range').datepicker('setDate', ['+2d', '+3d', '+4d']);
+
+  // объект расширения (хранит состояние календаря)
+  var extensionRange = $('#date_range').datepicker('widget').data('datepickerExtensionRange');
+  if (extensionRange.datesText) $('[name=multipleDate]').val(extensionRange.datesText.join('\n'));
+});
+
+</script>
+
+
+<style>
+
+textarea {
+  height: 90px;
+}
+
+
+</style>
+
+
+
+ </body>
+</html>
