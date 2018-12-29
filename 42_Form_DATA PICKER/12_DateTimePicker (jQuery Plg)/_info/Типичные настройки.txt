@@ -1,0 +1,39 @@
+<script src="./jquery.js"></script>
+
+<script src="node_modules/php-date-formatter/js/php-date-formatter.min.js"></script>
+<script src="node_modules/jquery-mousewheel/jquery.mousewheel.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css"/>
+
+<script src="jquery.datetimepicker.js"></script>
+
+
+
+  <script>
+  jQuery.datetimepicker.setLocale('ru'); //русская локализация
+    
+  	jQuery('#datetimepicker').datetimepicker({
+		  dayOfWeekStart : 1, // первый день недели - Пн
+		  format:'d.m.Y H:i',
+		  lang:'ru',
+		  minTime:'09:00',
+		  maxTime:'18:00',
+		  step:15,
+		  minDate:'-1970/01/01',  //yesterday is minimum date(for today use 0 or -1970/01/01) - те от СЕГОДНЯ
+          // maxDate:'+1970/01/02'//tomorrow is maximum date calendar
+		  onGenerate:function( ct ){ // отключение выходных
+			jQuery(this).find('.xdsoft_date.xdsoft_weekend')
+			  .addClass('xdsoft_disabled');
+		  },
+
+		  // weekends:['01.01.2014','02.01.2014','03.01.2014','04.01.2014','05.01.2014','06.01.2014'],
+		  // disabledDates: ['01.01.2014','02.01.2014','03.01.2014','04.01.2014','05.01.2014','06.01.2014'],
+		  
+		  
+	});
+
+		jQuery('#datetimepicker').click(function(){
+		  jQuery('#datetimepicker').datetimepicker('show'); //support hide,show and destroy command
+		});
+	
+  </script>
