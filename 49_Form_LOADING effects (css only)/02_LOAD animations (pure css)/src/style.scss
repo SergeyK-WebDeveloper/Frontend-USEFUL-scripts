@@ -1,0 +1,416 @@
+.main__container {
+  margin-left: 5%;
+  margin-top: 50px;
+}
+.loader-container {
+  margin-bottom: 70px;
+}
+
+.block-spinner-container {
+  display: flex; // because of inline-block atribute of child element
+  padding: 0px; 
+
+  .block {
+    display: inline-block;
+    height: 50px;
+    width: 7px;
+    margin: 1.0px;
+    background: black;
+    animation: ping 1.0s infinite ease-in-out;
+  }
+  
+  .spinner_1 {
+    animation-delay: -0.9s;
+  }
+  
+    
+  .spinner_2 {
+    animation-delay: -0.8s;
+  }
+  
+    
+  .spinner_3 {
+    animation-delay: -0.7s;
+  }
+  
+  .spinner_4 {
+    animation-delay: -0.6s;
+  }
+  
+  @keyframes ping {
+    0% {
+      transform: scaleY(0.4);
+    }
+   
+    50% {
+      transform: scaleY(1);
+    }
+    
+    100% {
+      transform: scaleY(0.4);
+    }
+  }
+}
+
+
+$main-ring-size: 40px;
+$step-reduce: 10px;
+$border-width: 2px;
+
+.circle {
+    position: relative;
+    display: block;
+    padding: 0;
+    height: $main-ring-size;
+    width: $main-ring-size;
+  .ring {
+    
+    position: absolute;
+    height: $main-ring-size;
+    width: $main-ring-size;
+    border: $border-width solid transparent;
+    border-radius: 50%;
+    border-left: $border-width solid black;
+    border-top: $border-width solid black;
+    animation: processing-rotate 1.0s infinite linear; 
+  }
+
+  .ring_0 {
+    @extend .ring;
+    height: $main-ring-size;
+    width: $main-ring-size;
+  }
+  
+  .ring_1 {
+    @extend .ring;
+    animation: linear-spin infinite 0.5s reverse linear;
+    height: $main-ring-size - $step-reduce;
+    width: $main-ring-size - $step-reduce;
+    // połowa z roznicy miedzy rodzicem a danym elementem 
+    top: ($main-ring-size - ($main-ring-size - $step-reduce)) / 2;
+    left: ($main-ring-size - ($main-ring-size - $step-reduce)) / 2;
+    bottom: ($main-ring-size - ($main-ring-size - $step-reduce)) / 2; 
+  }
+  
+  .ring_2 {
+    @extend .ring;
+    border-left: $border-width solid red;
+    border-top: $border-width solid red;
+    animation: linear-spin infinite 1s reverse linear;
+    // animation-duration: 0.3s;
+    // animation-direction: ;
+    height: $main-ring-size - $step-reduce * 2;
+    width: $main-ring-size - $step-reduce * 2;
+    // połowa z roznicy miedzy rodzicem a danym elementem 
+    top: ($main-ring-size - ($main-ring-size - $step-reduce* 2)) / 2;
+    left: ($main-ring-size - ($main-ring-size - $step-reduce* 2)) / 2;
+    bottom: ($main-ring-size - ($main-ring-size - $step-reduce* 2)) / 2; 
+  }
+}
+
+
+
+
+
+
+.simple-loading {
+  height: $main-ring-size;
+  width: $main-ring-size;
+  border-radius: 50%;
+  border: 5px solid rgba(0,0,0,0.1);
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  filter: blur(0.5px);
+
+  animation: linear-spin infinite 1s linear; 
+}
+
+@keyframes linear-spin {
+    0% {
+      transform: rotate(0deg);
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+      transform: rotate(180deg);
+    }
+    100% {
+      opacity: 0.8;
+      transform: rotate(360deg);
+    }
+}
+
+@keyframes processing-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(270deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+.jump-0 {
+  height: 50px;
+  width: 15px;
+  background: black;
+  animation: jump infinite 2s cubic-bezier(.11,1.45,.84,.18);
+  display: inline-block;
+  
+}
+
+.jump-1 {
+  @extend .jump-0;
+  animation-delay: 0.1s;
+}
+
+.jump-2 {
+  @extend .jump-0;
+  animation-delay: 0.2s;
+}
+.jump-3 {
+  @extend .jump-0;
+  animation-delay: 0.3s;
+}
+
+
+@keyframes jump {
+  0% {
+    transform: scaleY(1.0);
+  }
+  40% {
+      transform: scaleY(2.0);
+      box-shadow: -1px 4px 10px -2px rgba(0, 0, 0, 0.8);
+  }
+  70% {
+    
+  }
+  100% {
+    
+  }
+}
+
+
+
+
+
+.spring {
+  height: $main-ring-size * 4  / 2;
+  width: $main-ring-size *  4;
+  border-top-left-radius: 110px;  /* 100px of height + 10px of border */
+  border-top-right-radius: 110px; /* 100px of height + 10px of border */
+  border-right:  5px solid black;
+  border-top:  5px solid black;
+  border-left:  5px solid black;
+  transition: border 0.2s linear;
+  animation: spring-jump 3s infinite linear;
+}
+
+
+@keyframes spring-jump {
+  
+  0%, 17% {
+    border-right:  5px solid transparent;
+  }
+  17%, 33% {
+    border-top:  5px solid transparent;
+  }
+  33%, 50% {
+    border-left:  5px solid transparent;
+  }
+  
+  50%, 66% {
+    border-left:  5px solid black;
+   
+  }
+  66%, 82% {
+    border-top:  5px solid black;
+  }
+  82%, 100% {
+     border-right:  5px solid black;
+  }
+  
+}
+
+
+
+
+.windows-like-loading {
+  height: 76px;
+  width: 79px;
+  animation: rotate 8s infinite;
+  .square {
+    height: 20px;
+    width: 20px;
+    background: black;
+    margin-right: 3px;
+    display: inline-block;
+    animation: disappear 1s infinite alternate ease-out;
+    
+    border-radius: 2px;
+  }
+  .square:nth-child(1) {animation-delay: 200ms;}
+  @each $i in 2 4 {
+    .square:nth-child(#{$i}) {
+      animation-delay: 400ms;
+    }
+  }
+  @each $i in 3 5 7 {
+    .square:nth-child(#{$i}) {
+      animation-delay: 600ms;
+    }
+  }
+  @each $i in 6 8 {
+    .square:nth-child(#{$i}) {
+      animation-delay: 800ms;
+    }
+  }
+  .square:nth-child(9) {animation-delay: 1s;}
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  } 
+  25% {
+    transform: rotate(90deg);    
+  }
+  50% {
+    transform: rotate(180deg);    
+  }
+  75% {
+    transform: rotate(270deg);    
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+}
+
+
+
+
+.bouncing-ball-container {
+  display: flex;
+  .bouncing-ball {
+    height: 9px;
+    width: 9px;
+    border-radius: 50%;
+    background: black;
+    padding-right: 0px;
+    animation: bouncing 1s infinite cubic-bezier(0,0,.11,.63) ;
+    display: inline-block;
+    position: relative;
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        animation-delay: - $i * 0.1s;
+        opacity: 1 - (1 - ($i * 0.2));
+        $temp: #{$i}px;
+        filter: blur(temp);
+      }  
+    }
+  }
+}
+
+
+@keyframes bouncing {
+  from {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(25px);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-25px);
+    animation-timing-function: ease-in;
+  }
+  to {
+    transform:translateY(0);
+  }
+}
+
+
+$bouncingBoxHeight: 40px;
+$bouncingBoxWidth: 10px;
+$bouncingBoxPadding: 2px;
+
+.bouncing-box-container {
+  height: calc(#{$bouncingBoxHeight} * 2);
+  .bouncing-box {
+    height: $bouncingBoxHeight;
+    width: $bouncingBoxWidth;
+    background: black;
+    display: inline-block;
+    animation: height-bounce 1.2s infinite cubic-bezier(.36,.86,.86,1) ;
+    position: absolute;
+    bottom: 0px;
+    box-shadow: -1px 4px 10px -2px rgba(0, 0, 0, 0.61);
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * 0.1s;
+        left: calc((#{$i} * #{$bouncingBoxWidth}) + (#{$i} * #{$bouncingBoxPadding}));
+      }  
+    }
+    
+  }
+}
+@keyframes height-bounce {
+  10% {
+    height: $bouncingBoxHeight;
+  }
+  90% {
+    height: calc(#{$bouncingBoxHeight} * 2);
+  }
+}
+
+
+.box-circle {
+  width: 100px;
+  height: 100px;
+  border: 15px solid rgba(0,0,0, 0.9);
+  animation: linear-spin-with-transition infinite 2s linear; 
+  border-radius: 50%;
+  box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.38);
+}
+
+
+@keyframes linear-spin-with-transition {
+    0% {
+      border-radius: 50%;
+      transform: rotate(0deg);
+    }
+    35% {
+      border-radius: 25%;
+      transform: rotate(90deg);
+    }
+    
+    50% {
+      border-radius: 50% / 50%;
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
