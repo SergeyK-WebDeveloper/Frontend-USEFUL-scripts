@@ -1,0 +1,177 @@
+/* --- Variables --- */
+/* --- Globals --- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #282227;
+  font-size: 10px;
+}
+
+.wrapper {
+  width: 20em;
+  height: 20em;
+  position: relative;
+  font-size: 2vmin;
+}
+
+input {
+  display: none;
+}
+
+label {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border-radius: 100%;
+}
+label:hover .shaft {
+  background: #13CD4A;
+}
+label:hover .tip {
+  border-top-color: #13CD4A;
+}
+label:hover .box-center, label:hover .box-right, label:hover .box-left {
+  background: #13CD4A;
+}
+
+/* --- .arrow --- */
+.arrow {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.shaft {
+  width: 5em;
+  height: 6em;
+  background: #7B6ED6;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.tip {
+  width: 0;
+  height: 0;
+  border-right: 4em solid transparent;
+  border-left: 4em solid transparent;
+  border-top: 4em solid #7B6ED6;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* --- .box --- */
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  position: relative;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.box-center {
+  width: 8em;
+  height: 1.15em;
+  background: #7B6ED6;
+  border-radius: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.box-left, .box-right {
+  width: 1.15em;
+  height: 3em;
+  background: #7B6ED6;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+input:checked ~ label .arrow {
+  -webkit-transform: translateY(20em);
+          transform: translateY(20em);
+}
+input:checked ~ label .box {
+  -webkit-transform: translateY(-4.5em);
+          transform: translateY(-4.5em);
+  -webkit-transition-delay: .1s;
+          transition-delay: .1s;
+}
+input:checked ~ label .box-center {
+  width: 13em;
+  height: 3em;
+  background: #7B6ED6 -webkit-linear-gradient(135deg, #13CD4A 25%, transparent 25%, transparent 50%, #13CD4A 50%, #13CD4A 75%, transparent 75%, transparent);
+  background: #7B6ED6 linear-gradient(-45deg, #13CD4A 25%, transparent 25%, transparent 50%, #13CD4A 50%, #13CD4A 75%, transparent 75%, transparent);
+  background-size: 50px 50px;
+  border-radius: .5em;
+  -webkit-animation: move 2s linear infinite;
+          animation: move 2s linear infinite;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+input:checked ~ label .box-left, input:checked ~ label .box-right {
+  width: 0em;
+  height: 0em;
+  background: #7B6ED6;
+}

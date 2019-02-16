@@ -1,0 +1,50 @@
+.attach
+  position absolute
+  top 50%
+  left 50%
+  margin -32px 0 0 -32px
+  width 64px
+  height 64px
+  box-shadow inset 0 0 0 2px #EEE
+  border-radius 50%
+  overflow hidden
+  cursor pointer
+  transition all .6s ease
+  &:hover
+    box-shadow inset 0 0 0 2px #DDD
+  svg
+    position absolute
+    top 0
+    left 0
+    circle
+      stroke-dasharray 195
+      stroke-dashoffset 585
+      transition all 2s ease
+      transition-delay .2s
+    #doc
+      transform translate(21px,80px)
+      transition all 1.4s ease
+      transition-delay 2s
+    #clip-front
+    #clip-back
+      transform translate(1px,2px)
+      transition all 1.4s ease
+      transition-delay 2.2s
+    
+  &.active
+    animation bounce .4s forwards
+    svg
+      circle
+        stroke-dasharray 195
+        stroke-dashoffset 390
+      #doc
+        transform translate(21px,20px)
+      #clip-front
+      #clip-back
+        transform translate(1px,0)
+        
+@keyframes bounce
+  50%
+    transform scale(.95)
+
+    

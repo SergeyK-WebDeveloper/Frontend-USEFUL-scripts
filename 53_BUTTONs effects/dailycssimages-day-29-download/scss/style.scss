@@ -1,0 +1,167 @@
+/* --- Variables --- */
+$main: #7B6ED6;
+$action: #13CD4A;
+$secondary: #777;
+$dark: #0e0e0e;
+
+$speed: .5s;
+$type: ease;
+
+/* --- Globals --- */
+* {
+	box-sizing: border-box;
+}
+html, body {
+	height: 100%;
+}
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: darken(#5E525C, 20%);
+	
+	font-size: 10px;
+}
+.wrapper {
+	width: 20em;
+	height: 20em;
+
+	position: relative;
+	
+	font-size: 2vmin;
+}
+input {
+	display: none;
+}
+label {
+	width: 100%;
+	height: 100%;
+	
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+	cursor: pointer;
+	// background: lighten($main, 35%);
+	// border: .5em solid darken($main, 0%);
+	border-radius: 100%;
+	
+	&:hover {
+		.shaft {
+			background: $action;
+		}
+		.tip {
+			border-top-color: $action;
+		}
+		.box-center, .box-right, .box-left {
+			background: $action;
+		}
+	}
+}
+
+/* --- .arrow --- */
+.arrow {
+	width: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	position: relative;
+	
+	transition: all $speed $type;
+}
+.shaft {
+	width: 5em;
+	height: 6em;
+	
+	background: $main;
+	transition: all $speed $type;
+}
+.tip {
+	width: 0;
+	height: 0;
+	
+	border-right: 4em solid transparent;
+	border-left: 4em solid transparent;
+	border-top: 4em solid $main;
+	transition: all $speed $type;
+}
+
+
+/* --- .box --- */
+.box {
+	display: flex;
+	align-items: flex-end;
+	
+	position: relative;
+	transform: translateY(0);
+	transition: all $speed $type;
+}
+$boxSize: 1.15em;
+.box-center {
+	width: 8em;
+	height: $boxSize;
+	
+	background: $main;
+	border-radius: 0;
+	
+	transition: all $speed $type;
+}
+.box-left, .box-right {
+	width: $boxSize;
+	height: 3em;
+	
+	background: $main;
+	
+	transition: all $speed $type;
+}
+.box-left {}
+.box-right {}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+input:checked ~ label {
+	.arrow {
+		transform: translateY(20em);
+	}
+	.box {
+		transform: translateY(-4.5em);
+		transition-delay: .1s;
+	}
+	.box-center {
+		width: 13em;
+		height: 3em;
+		
+		background: $main linear-gradient(
+			-45deg,
+			$action 25%,
+			transparent 25%,
+			transparent 50%,
+			$action 50%,
+			$action 75%,
+			transparent 75%,
+			transparent
+		);
+		background-size: 50px 50px;
+		border-radius: .5em;
+		animation: move 2s linear infinite;
+		animation-delay: ($speed /2);
+	}
+	.box-left, .box-right {
+		width: 0em;
+		height: 0em;
+
+		background: $main;
+	}
+}

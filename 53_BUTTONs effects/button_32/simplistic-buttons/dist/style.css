@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900");
+body {
+  background: #8FA6B4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.button-parent {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+.button-parent--inner {
+  padding: 4em 1em;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  color: #4A4A4A;
+  display: inline-block;
+}
+
+.button-item {
+  padding-bottom: 2em;
+}
+
+.btn-1 {
+  padding: 1em 3em;
+  border: 3px solid #4A90E2;
+  transition: all 300ms ease;
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-1:before {
+  position: absolute;
+  content: '';
+  width: 0%;
+  height: 100%;
+  background: #4A90E2;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  transition: all 0ms ease;
+}
+.btn-1:hover {
+  color: white;
+  box-shadow: none;
+}
+.btn-1:hover:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #4A90E2;
+  top: 0;
+  left: 0%;
+  z-index: -1;
+  transition: all 300ms ease;
+}
+
+.btn-2 {
+  padding: 1em 3em;
+  border: 3px solid #4A90E2;
+  transition: all 300ms ease;
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-2:before {
+  position: absolute;
+  content: '';
+  width: 0%;
+  height: 100%;
+  background: #4A90E2;
+  top: 0;
+  left: auto;
+  right: 0;
+  z-index: -1;
+  transition: all 300ms ease;
+}
+.btn-2:hover {
+  color: white;
+  box-shadow: none;
+}
+.btn-2:hover:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #4A90E2;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.btn-3 {
+  padding: 1em 3em;
+  border: 3px solid #4A90E2;
+  transition: all 300ms ease;
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-3 span {
+  position: relative;
+  padding: 0em 0.2em;
+}
+.btn-3 span:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  height: 50%;
+  width: 0%;
+  background: #4A90E2;
+  z-index: -1;
+  transition: all 300ms ease;
+}
+.btn-3:hover {
+  color: white;
+  box-shadow: none;
+}
+.btn-3:hover span:before {
+  content: '';
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.btn-4 {
+  padding: 1em 3em;
+  border: 3px solid #4A90E2;
+  transition: all 300ms ease;
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-4 span {
+  position: relative;
+  padding: 0em 0.2em;
+}
+.btn-4 span:before {
+  content: '';
+  position: absolute;
+  bottom: auto;
+  top: 0;
+  height: 0%;
+  width: 100%;
+  background: #4A90E2;
+  z-index: -1;
+  transition: all 300ms ease;
+}
+.btn-4:hover {
+  color: white;
+  box-shadow: none;
+}
+.btn-4:hover span:before {
+  content: '';
+  height: 100%;
+  bottom: 0;
+  top: auto;
+}
+
+.btn-5 {
+  padding: 1em 3em;
+  border: 3px solid #4A90E2;
+  transition: all 300ms ease;
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-5:before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background: #4A90E2;
+  transition: all 0ms ease;
+}
+.btn-5:after {
+  content: '';
+  width: 80%;
+  height: 0px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background: #4A90E2;
+  transition: all 0ms ease;
+  z-index: -1;
+}
+.btn-5:hover {
+  color: white;
+  box-shadow: none;
+}
+.btn-5:hover:before {
+  content: '';
+  width: 80%;
+  height: 2px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background: #4A90E2;
+  transition: all 300ms ease;
+}
+.btn-5:hover:after {
+  content: '';
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transition: all 300ms ease;
+  transition-delay: 350ms;
+}
+
+.btn-6 {
+  padding: 1em 3em;
+  border: 3px solid #4A90E2;
+  transition: all 300ms ease;
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-6:before {
+  content: '';
+  height: 0%;
+  width: 2px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background: #4A90E2;
+  transition: all 0ms ease;
+}
+.btn-6:after {
+  content: '';
+  height: 80%;
+  width: 0px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background: #4A90E2;
+  transition: all 0ms ease;
+  z-index: -1;
+}
+.btn-6:hover {
+  color: white;
+  box-shadow: none;
+}
+.btn-6:hover:before {
+  content: '';
+  height: 80%;
+  width: 2px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background: #4A90E2;
+  transition: all 300ms ease;
+}
+.btn-6:hover:after {
+  content: '';
+  height: 80%;
+  width: 80%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transition: all 300ms ease;
+  transition-delay: 350ms;
+}
