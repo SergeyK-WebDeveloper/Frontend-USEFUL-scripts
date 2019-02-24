@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery-slideToggle.html</title>
+  
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html><html><head><title>jQuery Slide Toggle</title><script src="http://code.jquery.com/jquery-2.1.1.js"></script><script> 
+$(document).ready(function(){
+    $("#btn1").click(function(){
+    $(".divClass").slideToggle("slow",function()
+    {
+      alert("Slide Toggle Method completed.");
+    });
+  });});</script>
+ <style> .divClass{
+    margin-top:20px;
+    padding:10px;
+    text-align:center;
+    background-color:green;
+    border:solid 1px;
+    height:200px;
+    width: 300px;}</style></head><body>
+<button id="btn1">Click Me to slide Toggle</button><div class="divClass"><br><b>JournalDev</b> <br><br>jQuery SlideToggle</div><div id="textMsg"></div>
+</body></html>
+<!-- partial -->
+  
+</body>
+</html>
