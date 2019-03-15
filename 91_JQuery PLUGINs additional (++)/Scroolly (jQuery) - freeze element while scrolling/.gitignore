@@ -1,0 +1,19 @@
+# ide and os files
+config
+nbproject
+.idea
+*.desktop
+*.thumb
+*/.~*
+*/~*
+*/*~
+*.DS_Store
+*.sublime*
+
+# package managers
+composer.lock
+bower_components
+node_modules
+npm-debug.log
+demo/node_modules
+demo/bower_components

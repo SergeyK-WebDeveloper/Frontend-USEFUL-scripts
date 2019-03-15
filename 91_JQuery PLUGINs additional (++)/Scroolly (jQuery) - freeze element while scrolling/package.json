@@ -1,0 +1,34 @@
+{
+  "name": "jquery.scroolly",
+  "title": "jQuery.Scroolly",
+  "description": "Scroolly is a handy jQuery plugin that simplifies greatly scroll-effects scripting.",
+  "keywords": [
+    "scroolly",
+    "scroll",
+    "scroll-effect",
+    "parallax",
+    "sticky",
+    "jquery"
+  ],
+  "author": "Boris Mossounov <borix@tut.by> (https://anotherguru.me/)",
+  "version": "0.0.3",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:chayka/jQuery.Scroolly.git"
+  },
+  "scripts": {
+    "build": "npm install && grunt",
+    "start": "grunt watch"
+  },
+  "main": "src/jquery.scroolly.js",
+  "devDependencies": {
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt": "*"
+  }
+}
